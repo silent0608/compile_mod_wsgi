@@ -1,7 +1,7 @@
 # compile_mod_wsgi
-windows2012 下编译32位mod_wsgi
+# windows2012 下编译32位mod_wsgi
 
-需要软件
+## 需要软件
 1.apache2.4 32位
 https://www.apachelounge.com/download/VS16/binaries/httpd-2.4.39-win32-VS16.zip
 下载解压放在C:\Apache24
@@ -17,7 +17,7 @@ https://visualstudio.microsoft.com/zh-hans/downloads/
 https://codeload.github.com/GrahamDumpleton/mod_wsgi/zip/4.6.5
 下载解压放在C:\mod_wsgi-4.6.5
 
-编译准备
+## 编译准备
 1.拷贝common-VC10.mk 成 common-VC14.mk，并修改如下
 
 CPPFLAGS = \
@@ -81,10 +81,11 @@ PYTHON_ROOTDIR = C:\Users\aicontractAgent\AppData\Local\Programs\Python\Python37
 PYTHON_VERSION = 37
 include common-VC14.mk
 
-编译
+## 编译
 打开developer Command Prompt for VS 2019执行下面的命令
 cd C:\mod_wsgi-4.6.5\win32
 nmake -f ap24py37-win32-VC14.mk
 
+## 结果
 mod_wsgi.so文件生成在mod_wsgi-4.6.5\win32下
 
