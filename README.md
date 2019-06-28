@@ -96,7 +96,7 @@ nmake -f ap24py37-win32-VC14.mk
 
 mod_wsgi.so文件生成在mod_wsgi-4.6.5\win32下
 
-##后续
+## 后续
 
 在httpd.conf最后里添加
 ```
