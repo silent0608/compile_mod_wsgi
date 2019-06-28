@@ -97,3 +97,27 @@ nmake -f ap24py37-win32-VC14.mk
 
 mod_wsgi.so文件生成在mod_wsgi-4.6.5\win32下
 
+##后续
+
+在httpd.conf最后里添加
+```
+WSGIPythonPath "C:/xxx/Python/Python37-32;C:/Users/xxx/Python/Python37-32/Lib/site-packages"
+<VirtualHost *:80>
+    WSGIPassAuthorization On
+    WSGIScriptAlias / "C:/xxx/wsgi.py"
+    <Directory C:/xxx>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+</VirtualHost>
+```
+
+wsgi.py文件里添加，否则会出现找不到module
+```
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/..')
+```
+
+启动apache，终于出来了
