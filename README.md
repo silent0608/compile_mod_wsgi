@@ -1,5 +1,5 @@
 # compile_mod_wsgi
-# windows2012 下编译32位mod_wsgi
+# windows2012 下编译32位mod_wsgi并配置django项目
 
 ## 需要软件
 
