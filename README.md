@@ -23,59 +23,59 @@ https://codeload.github.com/GrahamDumpleton/mod_wsgi/zip/4.6.5<br>
 1.拷贝common-VC10.mk 成 common-VC14.mk，并修改如下
 
 ```
-	CPPFLAGS = \
-	 /machine:x86 \
-	 /DNDEBUG \
-	 /I"$(APACHE_ROOTDIR)\include" \
-	 /I"$(PYTHON_ROOTDIR)\include"
+CPPFLAGS = \
+ /machine:x86 \
+ /DNDEBUG \
+ /I"$(APACHE_ROOTDIR)\include" \
+ /I"$(PYTHON_ROOTDIR)\include"
 
-	CFLAGS = \
-	 /MD \
-	 /GF \
-	 /Gy \
-	 /O2 \
-	 /Wall \
-	 /Zc:wchar_t \
-	 /Zc:forScope
+CFLAGS = \
+ /MD \
+ /GF \
+ /Gy \
+ /O2 \
+ /Wall \
+ /Zc:wchar_t \
+ /Zc:forScope
 
-	LDFLAGS = \
-	 /link \
-	 /LIBPATH:$(APACHE_ROOTDIR)\lib \
-	 /LIBPATH:$(PYTHON_ROOTDIR)\libs \
-	 /OPT:REF \
-	 /OPT:ICF=2 \
-	 /RELEASE \
-	 /SUBSYSTEM:WINDOWS
+LDFLAGS = \
+ /link \
+ /LIBPATH:$(APACHE_ROOTDIR)\lib \
+ /LIBPATH:$(PYTHON_ROOTDIR)\libs \
+ /OPT:REF \
+ /OPT:ICF=2 \
+ /RELEASE \
+ /SUBSYSTEM:WINDOWS
 
-	LDLIBS = \
-	 python$(PYTHON_VERSION).lib \
-	 libhttpd.lib \
-	 libapr-1.lib \
-	 libaprutil-1.lib
+LDLIBS = \
+ python$(PYTHON_VERSION).lib \
+ libhttpd.lib \
+ libapr-1.lib \
+ libaprutil-1.lib
 
-	SRCFILES = ..\src\server\*.c
+SRCFILES = ..\src\server\*.c
 
-	mod_wsgi.so : $(SRCFILES)
-		cl $(CPPFLAGS) $(CFLAGS) $(SRCFILES) /LD $(LDFLAGS) $(LDLIBS) /OUT:$@
+mod_wsgi.so : $(SRCFILES)
+	cl $(CPPFLAGS) $(CFLAGS) $(SRCFILES) /LD $(LDFLAGS) $(LDLIBS) /OUT:$@
 
-	VARIANT = py$(PYTHON_VERSION)-VC14
+VARIANT = py$(PYTHON_VERSION)-VC14
 
-	install : mod_wsgi.so
-		copy $? $(APACHE_ROOTDIR)\modules\mod_wsgi-$(VARIANT).so
-		:
-		:
-		:
-		:
-		: You now need to edit $(APACHE_ROOTDIR)\conf\httpd.conf and add:
-		:
-		:   LoadModule wsgi_module modules/mod_wsgi-$(VARIANT).so
-		:
-		:
-		:
-		:
+install : mod_wsgi.so
+	copy $? $(APACHE_ROOTDIR)\modules\mod_wsgi-$(VARIANT).so
+	:
+	:
+	:
+	:
+	: You now need to edit $(APACHE_ROOTDIR)\conf\httpd.conf and add:
+	:
+	:   LoadModule wsgi_module modules/mod_wsgi-$(VARIANT).so
+	:
+	:
+	:
+	:
 
-	clean :
-		del *.obj *.so *.so.manifest *.lib *.exp
+clean :
+	del *.obj *.so *.so.manifest *.lib *.exp
 ``` 
   
 2.拷贝ap24py34-win32-VC10.mk 成 ap24py37-win32-VC14.mk，并修改如下
