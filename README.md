@@ -89,8 +89,10 @@ include common-VC14.mk
 ## 编译
 
 打开developer Command Prompt for VS 2019执行下面的命令
+``` 
 cd C:\mod_wsgi-4.6.5\win32
 nmake -f ap24py37-win32-VC14.mk
+``` 
 
 ## 结果
 
